@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 # /app/build puth to build folder
 
-#  second part
+#  second part, we are using nginx to host our files
 
 FROM nginx
 # copy from the builder step, up

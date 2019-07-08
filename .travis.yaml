@@ -1,0 +1,17 @@
+# we need this for docker, to run
+sudo: required
+#  Install docker
+services:
+  - docker
+
+# Commands that we need execute before test start
+before_install:
+# build dev docker file in current directory
+#  docker image name is tretiak/docker-react
+- docker build -t tretiak/docker-react -f Dockerfile.dev .
+
+# Suppose to contain all commands to run our tests
+script:
+  - docker run -e CI=true tretiak/docker-react npm run test
+
+
