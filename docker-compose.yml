@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  web:
+    build: 
+      # where to get files, if we want to run specific docker file
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+      # call docker volume for the hot load
+    volumes: 
+      - /app/node_modules
+      - .:/app
+  # Test service, when we will run docker compose up (--build if new service added)
+  # it will up >= 2 containers and one of them(tests) will be responsible for tests
+  # with docker compose we cannot manipulate tests by q,r,e ect.
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes: 
+      # make shure that we do not override directory expediently
+      - /app/node_modules
+      # current working directory
+      - .:/app
+    # Override start command from Dockerfile.dev
+    command: ["npm", "run", "test"]
