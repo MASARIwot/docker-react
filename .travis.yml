@@ -4,7 +4,7 @@ sudo: required
 services:
   - docker
 
-# Commands that we need execute before test start
+# Commands that we need execute before test start, we need to build a image!
 before_install:
 # build dev docker file in current directory
 #  docker image name is tretiak/docker-react
