@@ -1,3 +1,7 @@
+s3 https://s3.console.aws.amazon.com/s3/home?region=us-east-1
+aws bean https://us-east-1.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-1#/applications
+travis https://travis-ci.com/MASARIwot/docker-react/jobs/214579585
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
