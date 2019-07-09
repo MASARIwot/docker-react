@@ -22,7 +22,7 @@ deploy:
   #  Name of hte app
   app: "docker-react"
   #  EnV name
-  enc: "DockerReact-env"
+  env: "DockerReact-env"
   # Travis take all our file from the  github repository, zip
   # and copy to S3 bucket. after travis ping elasticbeanstalk
   # and notify that file uploaded
