@@ -14,4 +14,29 @@ before_install:
 script:
   - docker run -e CI=true tretiak/docker-react npm run test
 
+deploy:
+  # AWS
+  provider: elasticbeanstalk
+  # region in ou AWS url
+  region: "us-east-1"
+  #  Name of hte app
+  app: "docker-react"
+  #  EnV name
+  enc: "DockerReact-env"
+  # Travis take all our file from the  github repository, zip
+  # and copy to S3 bucket. after travis ping elasticbeanstalk
+  # and notify that file uploaded
+  bucket_name: "elasticbeanstalk-us-east-1-591291188791"
+  # the same as app name, name of the folder in the bucket_name folder
+  bucket_path: "docker-react"
+  # Deploy application only from master branch
+  on:
+    branch: master
+  # IAM Amazon service that manage API keys, hosted on travis
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
+  
+
+
 
